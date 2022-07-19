@@ -19,25 +19,21 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         
-        // Get API KEY in the properties file
+        // Get API KEY and API ENDPOINT in the properties file
         Properties prop = getProp();
         String apiKey = prop.getProperty("prop.api.key");
+        String endpoint = prop.getProperty("prop.api.endpoint");
 
         // Establish a HTTP conection and search the top 250 movies in IMDB
-        String endpoint = "https://imdb-api.com/en/API/Top250Movies/";
         URI address = URI.create(endpoint + apiKey);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(address).GET().build();
         var response = client.send(request, BodyHandlers.ofString());
         String body = response.body();
-        System.out.println(body);
-        System.out.println();
 
         // Extract only necessary data (title, image, etc.)
         var parser = new JsonParser();
         List<Map<String, String>> movieList = parser.parse(body);
-        System.out.println(movieList.size());
-        System.out.println();
 
         // Manipulate and display data
         for (Map<String,String> movie : movieList) {
