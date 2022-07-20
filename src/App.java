@@ -1,6 +1,8 @@
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandlers;
@@ -12,7 +14,7 @@ public class App {
     
     public static Properties getProp() throws IOException {
 		Properties props = new Properties();
-		FileInputStream file = new FileInputStream("./properties/data.properties");
+		FileInputStream file = new FileInputStream("./data.properties");
 		props.load(file);
 		return props;
 	}
@@ -37,10 +39,21 @@ public class App {
 
         // Manipulate and display data
         for (Map<String,String> movie : movieList) {
+
+            // List Movies in the Terminal
             System.out.println("Title : " + movie.get("title"));
+            System.out.println("Rank  : " + movie.get("rank"));
             System.out.println("Poster: " + movie.get("image"));
             System.out.println("Rating: " + movie.get("imDbRating"));
             System.out.println();
+
+            // Generate Sticker Images
+            InputStream inputStream = new URL(movie.get("image")).openStream();
+            String movieComment = "IRADO!";
+            String imageFileName = movie.get("rank") + " - " + movie.get("title") + ".png";
+            
+            StickerGenerator generator = new StickerGenerator();
+            generator.create(inputStream, imageFileName, movieComment);
         }
     }
 }

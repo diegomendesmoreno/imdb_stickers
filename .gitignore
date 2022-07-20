@@ -1,3 +1,12 @@
+### User ###
+
+# Properties file
+*.properties
+
+# Output images
+output_images/
+
+
 # Created by https://www.toptal.com/developers/gitignore/api/java
 # Edit at https://www.toptal.com/developers/gitignore?templates=java
 
@@ -7,9 +16,6 @@
 
 # Log file
 *.log
-
-# Properties file
-*.properties
 
 # BlueJ files
 *.ctxt
