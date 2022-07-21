@@ -13,8 +13,6 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
 
 ## Como rodar
 
-The workspace contains two folders by default, where:
-
 - Baixe ou clone o repositório
 - Crie um arquivo chamado `data.properties` com:
   - Se você usar a API (não oficial) [imdb-api.com](https://imdb-api.com/) (instável no momento):
