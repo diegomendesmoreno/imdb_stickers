@@ -38,17 +38,21 @@ public class App {
         List<Map<String, String>> movieList = parser.parse(body);
 
         // Manipulate and display data
-        for (Map<String,String> movie : movieList) {
+        for(int i = 0; i < 10; i++) {
+            Map<String,String> movie = movieList.get(i);
+
+            // Get URL of the bigger image
+            String imageUrl = movie.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
 
             // List Movies in the Terminal
             System.out.println("Title : " + movie.get("title"));
             System.out.println("Rank  : " + movie.get("rank"));
-            System.out.println("Poster: " + movie.get("image"));
             System.out.println("Rating: " + movie.get("imDbRating"));
+            System.out.println("Poster: " + imageUrl);
             System.out.println();
 
             // Generate Sticker Images
-            InputStream inputStream = new URL(movie.get("image")).openStream();
+            InputStream inputStream = new URL(imageUrl).openStream();
             String movieComment = "IRADO!";
             String imageFileName = movie.get("rank") + " - " + movie.get("title") + ".png";
             
