@@ -5,26 +5,21 @@ import java.net.URL;
 import java.util.Properties;
 
 public class App {
-    
-    public static Properties getProp() throws IOException {
-		Properties props = new Properties();
-		FileInputStream file = new FileInputStream("./data.properties");
-		props.load(file);
-		return props;
-	}
 
     public static void main(String[] args) throws Exception {
-        
-        // Get API KEY and API ENDPOINT in the properties file
-        Properties prop = getProp();
-        String apiKey = prop.getProperty("prop.api.key");
-        String endpoint = prop.getProperty("prop.api.endpoint");
+
+        // final String API = "IMDb";
+        final String API = "NASA";
+
+        // Get API URL
+        var apiUrl = new ApiUrl();
+        String url = apiUrl.getApiUrl(API);
 
         // Establish a HTTP conection and get JSON from API
         var httpClient = new MyHttpClient();
-        String body = httpClient.getData(endpoint + apiKey);
+        String body = httpClient.getData(url);
 
-        // Extract only necessary data (title, image, etc.)
+        // Extract only necessary data (title and image)
         // var contentExtractor = new ContentImdbExtractor();
         var contentExtractor = new ContentNasaExtractor();
         var contentList = contentExtractor.contentExtractor(body);
