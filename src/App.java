@@ -2,8 +2,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 public class App {
@@ -27,30 +25,26 @@ public class App {
         String body = httpClient.getData(endpoint + apiKey);
 
         // Extract only necessary data (title, image, etc.)
-        var parser = new JsonParser();
-        List<Map<String, String>> contentList = parser.parse(body);
+        // var contentExtractor = new ContentImdbExtractor();
+        var contentExtractor = new ContentNasaExtractor();
+        var contentList = contentExtractor.contentExtractor(body);
 
         // Manipulate and display data
-        for(int i = 0; i < 5; i++) {
-            Map<String,String> content = contentList.get(i);
+        for(int i = 0; i < 3; i++) {
+            var content = contentList.get(i);
 
-            // Get URL of the bigger image
-            String imageUrl = content.get("image").replaceAll("(@+)(.*).jpg$", "$1.jpg");
-
-            // List Movies in the Terminal
-            System.out.println("Title : " + content.get("title"));
-            System.out.println("Rank  : " + content.get("rank"));
-            System.out.println("Rating: " + content.get("imDbRating"));
-            System.out.println("Poster: " + imageUrl);
+            // List content in the Terminal
+            System.out.println("Title : " + content.getTitle());
+            System.out.println("Poster: " + content.getImageUrl());
             System.out.println();
 
             // Generate Sticker Images
-            InputStream inputStream = new URL(imageUrl).openStream();
-            String movieComment = "IRADO!";
-            String imageFileName = content.get("rank") + " - " + content.get("title") + ".png";
+            InputStream inputStream = new URL(content.getImageUrl()).openStream();
+            String imageFileName = content.getTitle() + ".png";
+            String comment = "IRADO!";
             
             StickerGenerator generator = new StickerGenerator();
-            generator.create(inputStream, imageFileName, movieComment);
+            generator.create(inputStream, imageFileName, comment);
         }
     }
 }
