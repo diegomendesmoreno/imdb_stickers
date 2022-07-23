@@ -5,20 +5,22 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        // final String API = "IMDb";
-        final String API = "NASA";
-
-        // Get API URL
+        // Get API information
         var apiUrl = new ApiUrl();
-        String url = apiUrl.getApiUrl(API);
+        String api = apiUrl.getApi();
+        String url = apiUrl.getApiUrl();
 
-        // Establish a HTTP conection and get JSON from API
+        // Establish a HTTP conection and get JSON
         var httpClient = new MyHttpClient();
         String body = httpClient.getData(url);
 
         // Extract only necessary data (title and image)
-        // var contentExtractor = new ContentImdbExtractor();
-        var contentExtractor = new ContentNasaExtractor();
+        ContentExtractor contentExtractor;
+        if(new String("IMDb").equals(api)) {
+            contentExtractor = new ContentImdbExtractor();
+        } else {
+            contentExtractor = new ContentNasaExtractor();
+        }
         var contentList = contentExtractor.contentExtractor(body);
 
         // Manipulate and display data

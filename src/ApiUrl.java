@@ -6,7 +6,7 @@ public class ApiUrl {
 
     private final String propertiesFilePath = "./data.properties";
     
-    public String getApiUrl(String API) throws IOException {
+    public String getApiUrl() throws IOException {
 
         // Get API KEY and API ENDPOINT in the properties file
         Properties prop = this.getProp();
@@ -14,8 +14,9 @@ public class ApiUrl {
         String url = "";
         String apiKey = prop.getProperty("prop.api.key");
         String endpoint = prop.getProperty("prop.api.endpoint");
+        String api = this.getApi();
 
-        switch(API) {
+        switch(api) {
             case "IMDb":
                 url = endpoint + apiKey;
                 break;
@@ -33,6 +34,14 @@ public class ApiUrl {
         }
 
         return url;
+    }
+
+    public String getApi() throws IOException {
+
+        // Get which API is in use from properties file
+        Properties prop = this.getProp();
+
+        return prop.getProperty("prop.api");
     }
 
     private Properties getProp() throws IOException {

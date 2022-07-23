@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ContentImdbExtractor {
+public class ContentImdbExtractor implements ContentExtractor {
     
     public List<Content> contentExtractor(String json) {
         var parser = new JsonParser();

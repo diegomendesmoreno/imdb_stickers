@@ -18,37 +18,37 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
   - Para a API do IMDb:
     - Se você usar a API (não oficial) [imdb-api.com](https://imdb-api.com/) (instável no momento):
       ```yaml
-      ## IMDb unofficial
+      prop.api = IMDb
       prop.api.key = SUA_API_KEY
       prop.api.endpoint = https://imdb-api.com/en/API/Top250Movies/
       ```
     - Se você usar uma mock API (criada pelo instrutor @Alexandre Aquiles - Alura):
       ```yaml
-      ## IMDb Mock API
+      prop.api = IMDb
       prop.api.key = 
       prop.api.endpoint = https://api.mocki.io/v2/549a5d8b
       ```
     - Se você usar uma mock API (criada por @rezendecas):
       ```yaml
-      ## IMDb Mock API
+      prop.api = IMDb
       prop.api.key = 
       prop.api.endpoint = https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060
       ```
     - Se você usar uma mock API (criada por @Jhon Santana):
       ```yaml
-      ## IMDb Mock API
+      prop.api = IMDb
       prop.api.key = 
       prop.api.endpoint = https://alura-imdb-api.herokuapp.com/movies
       ```
     - Se você usar uma mock API (criada por @Jacqueline Oliveira):
       ```yaml
-      ## IMDb Mock API
+      prop.api = IMDb
       prop.api.key = 
       prop.api.endpoint = https://alura-filmes.herokuapp.com/conteudos
       ```
   - Para a API [APOD (Astronomy Picture of the Day) da NASA](https://api.nasa.gov/):
     ```yaml
-    ## NASA API
+    prop.api = NASA
     prop.api.key = DEMO_KEY
     prop.api.start_date = 2022-06-12
     prop.api.end_date = 2022-06-14
@@ -57,8 +57,9 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
 
 ## Detalhes
 
-- Endpoint e chave de API tirados do arquivo `data.properties` não incluído no repositório (escondendo a chave)
+- Informações da API (qual API, endpoint e chave) tirados do arquivo `data.properties` não incluído no repositório
 - O comentário da imagem de saída tem a fonte de tamanho variável, dependente do tamanho da imagem
 - O comentário é centralizado na seção inferior transparente
 - O comentário é ajustado automaticamente de acordo com o tamanho da imagem
 - Classe `ApiUrl` que retorna uma URL pronta tirado do arquivo `data.properties`
+- De acordo com a API utilizada (`prop.api`) a interface correta é chamada
