@@ -18,8 +18,10 @@ public class App {
         ContentExtractor contentExtractor;
         if(new String("IMDb").equals(api)) {
             contentExtractor = new ContentImdbExtractor();
-        } else {
+        } else if(new String("NASA").equals(api)) {
             contentExtractor = new ContentNasaExtractor();
+        } else {
+            contentExtractor = new ContentLanguagesExtractor();
         }
         var contentList = contentExtractor.contentExtractor(body);
 

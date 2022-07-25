@@ -27,6 +27,10 @@ public class ApiUrl {
                 
                 url = endpoint + "?api_key=" + apiKey + "&start_date=" + start_date + "&end_date=" + end_date;
                 break;
+            
+            case "Languages":
+                url = endpoint + apiKey;
+                break;
 
             default:
                 System.out.println("Unknown API");
@@ -45,9 +49,9 @@ public class ApiUrl {
     }
 
     private Properties getProp() throws IOException {
-		Properties props = new Properties();
-		FileInputStream file = new FileInputStream(this.propertiesFilePath);
-		props.load(file);
-		return props;
-	}
+        Properties props = new Properties();
+        FileInputStream file = new FileInputStream(this.propertiesFilePath);
+        props.load(file);
+        return props;
+    }
 }

@@ -53,6 +53,11 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
     prop.api.start_date = 2022-06-12
     prop.api.end_date = 2022-06-14
     prop.api.endpoint = https://api.nasa.gov/planetary/apod
+  - Para a API customizada de linguagens de programação (teste em localhost):
+    ```yaml
+    prop.api = Languages
+    prop.api.key = 
+    prop.api.endpoint = http://localhost:8080/languages
     ```
 
 ## Detalhes
