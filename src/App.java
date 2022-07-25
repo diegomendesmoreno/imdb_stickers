@@ -26,7 +26,7 @@ public class App {
         var contentList = contentExtractor.contentExtractor(body);
 
         // Manipulate and display data
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 5; i++) {
             var content = contentList.get(i);
 
             // List content in the Terminal
