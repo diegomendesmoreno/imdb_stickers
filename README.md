@@ -15,6 +15,19 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
 
 - Baixe ou clone o repositório
 - Crie um arquivo chamado `data.properties` na raíz do projeto com o seguinte conteúdo:
+  - Para a API customizada de linguagens de programação:
+    - Na API deployed no **heroku**:
+      ```yaml
+      prop.api = Languages
+      prop.api.key = 
+      prop.api.endpoint = https://prog-language-api.herokuapp.com/languages
+      ```
+    - Em `localhost/`:
+      ```yaml
+      prop.api = Languages
+      prop.api.key = 
+      prop.api.endpoint = http://localhost:8080/languages
+      ```
   - Para a API do IMDb:
     - Se você usar a API (não oficial) [imdb-api.com](https://imdb-api.com/) (instável no momento):
       ```yaml
@@ -53,12 +66,6 @@ Projeto em Java que consome a API (não oficial) do IMDb (Internet Movie Databas
     prop.api.start_date = 2022-06-12
     prop.api.end_date = 2022-06-14
     prop.api.endpoint = https://api.nasa.gov/planetary/apod
-  - Para a API customizada de linguagens de programação (teste em localhost):
-    ```yaml
-    prop.api = Languages
-    prop.api.key = 
-    prop.api.endpoint = http://localhost:8080/languages
-    ```
 
 ## Detalhes
 
